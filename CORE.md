@@ -14,6 +14,8 @@ manos a la obra:
 
 ## Basic window - Ventana básica
 
+![Basic window](/resources/basic-window.png)
+
 ```
 /***************************************************
  * raylib [core] example - Basic window

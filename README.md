@@ -8,7 +8,7 @@ entre otros objetivos.
 
 El propósito de esta serie es aplicar los conocimientos de aprendidos de raylib
 en aplicaciones de uso real, aparte de comprobar y aplicar los ejemplos vistos
-en la wiki de la librería. [Raylib wiki](https://www.raylib.com/examples.html)
+en la wiki de la librería. [Raylib Wiki](https://www.raylib.com/examples.html)
 
 **Raylib** es una librería pensada originalmente para el desarrollo espartano de
 videojuegos. Palabras de su desarrollador, sin motores de video, aplicaciones de
