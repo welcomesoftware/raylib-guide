@@ -1,4 +1,4 @@
-# Raylib guide from scratch
+# raylib Guide From Scratch
 
 ![raylib logo](resources/raylib-tittle.png)
 
@@ -50,4 +50,4 @@ Te pido me tengas un poco de paciencia porque ire subiendo documentación de poc
 a poco, a medida que mi tiempo me lo permita. Sin mas preambulos, comencemos.
 
 ## Introducción
-[raylib [core]](/welcomesoftware/raylib-guide/blob/main/CORE.md)
+[raylib [core]](/CORE.md)
