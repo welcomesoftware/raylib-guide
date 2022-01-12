@@ -15,15 +15,22 @@ int main()
 
     InitWindow(screenWidth, screenHeight, "Basic screen manager");
     SetTargetFPS(60);
+
+    // Aquí se crea una variable de tipo ventana, de la cual definimos cuatro
+    // enumeraciones en la linea 8, y decidimos que la primera ventana que se
+    // verá es la de logo
     GameScreen currentScreen = LOGO;
 
     // Initialize variables
+    // creamos un contadore de frames que nos servira para situaciones en las
+    // que tengamos que medir tiempo
     int framesCounter = 0;          // useful to count frames
 
     // Main game loop
     while(!WindowShouldClose())     // Detect window close
     {
         // Update
+        // Toda la lógica del juego o aplicación se produce en esta parte
         switch(currentScreen)
         {
             case LOGO:
@@ -45,7 +52,7 @@ int main()
                 // Press enter to change GAMEPLAY screen
                 if(IsKeyPressed(KEY_ENTER) || IsGestureDetected(GESTURE_TAP))
                 {
-                    currentScreen = GAMEPLAY;
+                   currentScreen = GAMEPLAY;
                 }
             } break;
 
@@ -79,29 +86,31 @@ int main()
             switch(currentScreen)
             {
                 case LOGO:
-                   // TODO: Draw LOGO screen here!
-                   DrawText("WELCOME 2D JUNGLE GAMEDEVELOP", 20, 20, 40, BEIGE);
-                   DrawText("Espere unos segundos...", 290, 220, 20, GRAY);
-                   break;
+                    // TODO: Draw LOGO screen here!
+                    DrawText("WELCOMESOFTWARE GAMEDEVELOP", 10, 10, 10, GRAY);
+                    DrawText(TextFormat("ESPERE %i SEGUNDOS...", (int)GetTime()), 10, 20, 10, GRAY);
+                    break;
 
                 case TITLE:
-                   // TODO: Draw TITLE screen here!
-                   ClearBackground(BLACK);
-                   DrawText("WELCOME TO MARS", 20, 20, 40, WHITE);
-                   DrawText("Mars is realy blue", 20, 60, 20, BLUE);
-                   break;
+                    // TODO: Draw TITLE screen here!
+                    DrawRectangle(0, 0, screenWidth, screenWidth, PURPLE);
+                    DrawText("WELCOME 2D JUNGLE", 10, 10, 10, GOLD);
+                    DrawText("THE FURY CITY", 10, 20, 10, GOLD);
+                    DrawText("PRESS ENTER or TAP to JUMP to GAMEPLAY SCREEN", 120, 220, 20, GOLD);
+                    break;
                 
                 case GAMEPLAY:
-                   ClearBackground(BLACK);
-                   DrawText("READY TO PLAY", 290, 220, 40, PURPLE);
-                   DrawText("Are you ready player one...", 290, 260, 20, YELLOW);
-                   break;
+                    DrawRectangle(0, 0, screenWidth, screenWidth, DARKGRAY);
+                    DrawText("LETS GET READY", 10, 10, 10, WHITE);
+                    DrawText("READY PLAYER ONE...", 10, 20, 10, WHITE);
+                    DrawText("PRESS ENTER or TAP to JUMP to ENDING SCREEN", 120, 220, 20, WHITE);
+                    break;
 
                 case ENDING:
-                   ClearBackground(BLACK);
-                   DrawText("Game Over", 290, 220, 40, WHITE);
-                   DrawText("Press ESC to exit", 290, 260, 20, WHITE);
-                   break;
+                    DrawRectangle(0, 0, screenWidth, screenHeight, YELLOW);
+                    DrawText("GAME OVER", 10, 10, 10, PINK);
+                    DrawText("PRESS ESC TO EXIT THE GAME", 10, 20, 10, PINK);
+                    break;
             }
         EndDrawing();
     }
