@@ -1,4 +1,4 @@
-# raylib [CORE] - Introduction
+# [CORE] - Introduction
 
 El módulo **[CORE]** de *raylib* se encarga del manejo de las ventanas, cursor,
 dibujado de objetos en pantalla, ya sea modelos 3d u objetos 2d, sistemas de 
@@ -67,3 +67,17 @@ int main()
 }
 
 ```
+Si omitimos los comentarios y las lineas de identado por estilo de programación,
+nos daremos cuenta que solo nos tomó 12 lineas de codigo crear nuestra ventana,
+si al igual igual que yo, tienes conocimientos de otras librerías, ya sabrás 
+que esto no es mucho. La otra parte es que crear ventanas con raylib es sencillo
+no requiere de mucha lógica, el unico requisito es saber programar en C o C++,
+e incluso puedes cambiar al lenguaje de tu elección porque la librería te permite
+desarrollar con mas de 50 lenguajes disponibles.
+
+En este repositorio están los archivos de cada ejercicio para que los puedas
+descargar y compilar, e incluso si eres un obsecado como yo, puedes reescribirlos
+a tu propio gusto, estilo y forma. La mejor forma de aprender es leer y escribir 
+código una y otra vez, hasta que los conceptos queden claros en tu memoria.
+
+[Ir al código de este ejercicio](/basic-window.c)
