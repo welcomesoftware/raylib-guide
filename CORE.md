@@ -85,8 +85,11 @@ código una y otra vez, hasta que los conceptos queden claros en tu memoria.
 ## Basic screen manager - Manejador de ventanas básico
 
 ![Basic screen manager](/resources/basic-screen-manager.png)
+
 En este ejercicio vamos a aprender como funciona un manejador de ventanas 
 basico utilizando la librería raylib, e implementarlo en nuestro juego de una
 forma sencilla. Omitiré las partes que ya hayan sido explicadas anteriormente o
 que no tengan mucha complejidad, así que tendrás que estar atento a cada tema
 para que puedas seguirle el ritmo a esta guía.
+
+[Ir al código de este ejercicio](/basic-screen-manager.c)
