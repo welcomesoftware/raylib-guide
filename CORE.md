@@ -92,4 +92,121 @@ forma sencilla. Omitiré las partes que ya hayan sido explicadas anteriormente o
 que no tengan mucha complejidad, así que tendrás que estar atento a cada tema
 para que puedas seguirle el ritmo a esta guía.
 
+### Conceptos nuevos:
+
+Añadimos una nueva variable de tipo GameScreen para controllar en que pantalla
+nos encontramos, y declaramos cuantas pantallas queramos en nuestro juego.
+
+```
+// Types and structures definition
+typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING } GameScreen;
+
+// Aquí se crea una variable de tipo ventana, de la cual definimos cuatro
+// enumeraciones en la linea 8, y decidimos que la primera ventana que se
+// verá es la de logo
+GameScreen currentScreen = LOGO;
+```
+
+Creamos un contador de frames que nos vendra bién para manipular tiempos de 
+espera, entre otras cosas.
+
+```
+// creamos un contador de frames que nos servira para situaciones en las
+// que tengamos que medir tiempo
+int framesCounter = 0;          // useful to count frames
+```
+
+Luego vamos al lugar donde sucede la magia; por fin hacemos uso de la sección
+update: que es donde toda la lógica del juego se ejecuta.
+
+```
+// Update
+// Toda la lógica del juego o aplicación se produce en esta parte
+switch(currentScreen)
+{
+    case LOGO:
+        // TODO: Update LOGO screen variables here!
+        framesCounter++;
+        // Wait for 5 seconds (300 frames) before jumping to TITLE screen
+        if(framesCounter > 300) currentScreen = TITLE;
+        break;
+
+    case TITLE:
+        // TODO: Update LOGO screen variables here!
+        // Press enter to change GAMEPLAY screen
+        if(IsKeyPressed(KEY_ENTER) || IsGestureDetected(GESTURE_TAP))
+        currentScreen = GAMEPLAY;
+        break;
+
+    case GAMEPLAY:
+        // TODO: Update GAMEPLAY screen variables here!
+        // Press enter to change ENDING screen
+        if(IsKeyPressed(KEY_ENTER) || IsGestureDetected(GESTURE_TAP)) currentScreen = ENDING;
+        break;
+
+    case ENDING:
+        if(IsKeyPressed(KEY_ESCAPE)) break;
+        break;
+
+    default: break;
+}
+```
+
+En la sección Draw también tendremos un poco de magia, dependiendo que que se
+este actualizando en Update:
+
+```
+// Al igual que en la sección update, la magia ocurre aquí también
+// debido a que debendiendo de en que pantalla se encuente update
+// se actualiza y se redibuja aquí.
+switch(currentScreen)
+{
+    case LOGO:
+        // TODO: Draw LOGO screen here!
+        DrawText("WELCOMESOFTWARE GAMEDEVELOP", 10, 10, 10, GRAY);
+        DrawText(TextFormat("ESPERE %i SEGUNDOS...", (int)GetTime()), 10, 20, 10, GRAY);
+        break;
+
+    case TITLE:
+        // TODO: Draw TITLE screen here!
+        DrawRectangle(0, 0, screenWidth, screenWidth, PURPLE);
+        DrawText("WELCOME 2D JUNGLE", 10, 10, 10, GOLD);
+        DrawText("THE FURY CITY", 10, 20, 10, GOLD);
+        DrawText("PRESS ENTER or TAP to JUMP to GAMEPLAY SCREEN", 120, 220, 20, GOLD);
+        break;
+    
+    case GAMEPLAY:
+        DrawRectangle(0, 0, screenWidth, screenWidth, DARKGRAY);
+        DrawText("LETS GET READY", 10, 10, 10, WHITE);
+        DrawText("READY PLAYER ONE...", 10, 20, 10, WHITE);
+        DrawText("PRESS ENTER or TAP to JUMP to ENDING SCREEN", 120, 220, 20, WHITE);
+        break;
+
+    case ENDING:
+        DrawRectangle(0, 0, screenWidth, screenHeight, YELLOW);
+        DrawText("GAME OVER", 10, 10, 10, PINK);
+        DrawText("PRESS ESC TO EXIT THE GAME", 10, 20, 10, PINK);
+        break;
+}
+```
+
+Hasta aquí hemos cubierto todos los conceptos nuevos del manejador de ventanas,
+si algo no te ha quedado claro te invito a que repases lo visto anteriormente, 
+aunque si tienes experiencia programando en c, no creo que te sea difícil entenderlo.
+
+**Dos puntos a tomar en cuenta**
+    1. La sección Update se dedica a actualizar la lógica o mecanicas de juego 
+    como actulizar la posición del jugador, la ventana que se muestra en ese
+    momento, el tiempo, etc.
+    2. Mientras que la sección Draw se dedica a dibujar en pantalla una y otra
+    vez lo que hemos decidido visualizar en pantalla, y que se actualizó en Update. 
+
+Te invito a que vayas al código y veas como quedo el ejercicio, lo reescribas 
+desde cero y lo compiles, e incluso juega un poco con el, hasta que te sientas 
+a gusto con el tema.
+
 [Ir al código de este ejercicio](/basic-screen-manager.c)
+
+## Input keys - Entrada por teclas (Teclado)
+
+![Input keys](/resources/input-keys.png)

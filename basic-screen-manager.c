@@ -22,7 +22,7 @@ int main()
     GameScreen currentScreen = LOGO;
 
     // Initialize variables
-    // creamos un contadore de frames que nos servira para situaciones en las
+    // creamos un contador de frames que nos servira para situaciones en las
     // que tengamos que medir tiempo
     int framesCounter = 0;          // useful to count frames
 
@@ -34,46 +34,28 @@ int main()
         switch(currentScreen)
         {
             case LOGO:
-            {
                 // TODO: Update LOGO screen variables here!
                 framesCounter++;
-                
                 // Wait for 5 seconds (300 frames) before jumping to TITLE screen
-                if(framesCounter > 300)
-                {
-                    currentScreen = TITLE;
-                }
-            } break;
+                if(framesCounter > 300) currentScreen = TITLE;
+                break;
 
             case TITLE:
-            {
                 // TODO: Update LOGO screen variables here!
-                
                 // Press enter to change GAMEPLAY screen
                 if(IsKeyPressed(KEY_ENTER) || IsGestureDetected(GESTURE_TAP))
-                {
-                   currentScreen = GAMEPLAY;
-                }
-            } break;
+                currentScreen = GAMEPLAY;
+                break;
 
             case GAMEPLAY:
-            {
                 // TODO: Update GAMEPLAY screen variables here!
-
                 // Press enter to change ENDING screen
-                if(IsKeyPressed(KEY_ENTER) || IsGestureDetected(GESTURE_TAP))
-                {
-                    currentScreen = ENDING;
-                }
-            } break;
+                if(IsKeyPressed(KEY_ENTER) || IsGestureDetected(GESTURE_TAP)) currentScreen = ENDING;
+                break;
 
             case ENDING:
-            {
-                if(IsKeyPressed(KEY_ESCAPE))
-                {
-                    break;
-                }
-            } break;
+                if(IsKeyPressed(KEY_ESCAPE)) break;
+                break;
 
             default: break;
         }
@@ -83,6 +65,9 @@ int main()
         
             ClearBackground(RAYWHITE);
             
+            // Al igual que en la sección update, la magia ocurre aquí también
+            // debido a que debendiendo de en que pantalla se encuente update
+            // se actualiza y se redibuja aquí.
             switch(currentScreen)
             {
                 case LOGO:
