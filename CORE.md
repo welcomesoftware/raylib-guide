@@ -82,6 +82,7 @@ código una y otra vez, hasta que los conceptos queden claros en tu memoria.
 
 [Ir al código de este ejercicio](/basic-window.c)
 
+
 ## Basic screen manager - Manejador de ventanas básico
 
 ![Basic screen manager](/resources/basic-screen-manager.png)
@@ -195,17 +196,18 @@ aunque si tienes experiencia programando en c, no creo que te sea difícil enten
 
 **Dos puntos a tomar en cuenta:**
 
-    1. La sección Update se dedica a actualizar la lógica o mecánicas de juego 
-    como actulizar la posición del jugador, la ventana que se muestra en ese
-    momento, el tiempo, etc.
-    2. Mientras que la sección Draw se dedica a dibujar en pantalla una y otra
-    vez lo que hemos decidido visualizar en pantalla, y que se actualizó en Update. 
+La sección Update se dedica a actualizar la lógica o mecánicas de juego 
+como actulizar la posición del jugador, la ventana que se muestra en ese
+momento, el tiempo, etc.
+Mientras que la sección Draw se dedica a dibujar en pantalla una y otra
+vez lo que hemos decidido visualizar en pantalla, y que se actualizó en Update. 
 
 Te invito a que vayas al código y veas como quedo el ejercicio, lo reescribas 
 desde cero y lo compiles, e incluso juega un poco con el, hasta que te sientas 
 a gusto con el tema.
 
 [Ir al código de este ejercicio](/basic-screen-manager.c)
+
 
 ## Input keys - Entrada por teclas (Teclado)
 
@@ -271,15 +273,14 @@ if(IsGamepadAvailable(0))
 }
 ```
 
-Entrada por gamepad
-====================
+### Funciones para entrada por gamepad
 
-    IsGamepadAvailable(): Valida si hay un gamepad disponible en la posicion 0
-    IsGamepadButtonDown(): Valida si se esta presionando un botón en el gamepad 0  
-    GAMEPAD_BUTTON_LEFT_FACE_UP: Hace referencia al botón d-pad UP
-    GAMEPAD_BUTTON_LEFT_FACE_DOWN: Hace referencia al botón d-pad DOWN
-    GAMEPAD_BUTTON_LEFT_FACE_LEFT: Hace referencia al botón d-pad LEFT
-    GAMEPAD_BUTTON_LEFT_FACE_RIGHT: Hace referencia al botón d-pad RIGHT
+IsGamepadAvailable(): Valida si hay un gamepad disponible en la posicion 0
+IsGamepadButtonDown(): Valida si se esta presionando un botón en el gamepad 0  
+GAMEPAD_BUTTON_LEFT_FACE_UP: Hace referencia al botón d-pad UP
+GAMEPAD_BUTTON_LEFT_FACE_DOWN: Hace referencia al botón d-pad DOWN
+GAMEPAD_BUTTON_LEFT_FACE_LEFT: Hace referencia al botón d-pad LEFT
+GAMEPAD_BUTTON_LEFT_FACE_RIGHT: Hace referencia al botón d-pad RIGHT
 
 Cuando se presiona un botón o una tecla, dependiendo de la dirección se actualiza
 la posición de la misma en el vector ballPosition en su eje correspondiente. 
@@ -321,3 +322,64 @@ presionemos una tecla se actualizará la posición del vector y se re dibujará 
 círculo en la nueva posición. Esto ocurre en la sección Draw.
 
 [Ir al código de este ejercicio](/input-keys.c)
+
+
+## Mouse input - Entrada por mouse
+
+![Mouse input screenshot](/resources/mouse-input.png)
+
+En este ejercicio vamos a aprender a manejar la entrada a través de mouse, no 
+hay muchos conceptos nuevos por ver. Si eres un poco curioso y ansioso, podrás 
+darte cuenta como funciona este código sin tanto enredo.
+
+### Conceptos nuevos
+
+Creamos una variable Color y le asignamos el color azul para manejar el color 
+de los objetos que deseemos, luego veremos bien como nos vendrá de utilidad.
+
+```
+Color ballColor = DARKBLUE;
+```
+
+Utilizamos la función GetMousePosition() para obtener la posición del mouse en
+coordenadas y la asignamos a una variable de coordenadas o Vector2 llamada 
+ballPosition. La posición de nuestra bola sera la posición de nuestro cursor.
+
+```
+ballPosition = GetMousePosition();
+```
+
+```
+// Dependiendo del boton presionado cambia el color de la bola
+if(IsMouseButtonDown(MOUSE_BUTTON_LEFT)) ballColor = DARKBLUE;
+else if(IsMouseButtonDown(MOUSE_BUTTON_MIDDLE)) ballColor = LIME;
+else if(IsMouseButtonDown(MOUSE_BUTTON_RIGHT)) ballColor = RED;
+```
+
+### Constantes del mouse
+
+```
+// Mouse buttons
+typedef enum {
+    MOUSE_BUTTON_LEFT    = 0,       // Mouse button left
+    MOUSE_BUTTON_RIGHT   = 1,       // Mouse button right
+    MOUSE_BUTTON_MIDDLE  = 2,       // Mouse button middle (pressed wheel)
+    MOUSE_BUTTON_SIDE    = 3,       // Mouse button side (advanced mouse device)
+    MOUSE_BUTTON_EXTRA   = 4,       // Mouse button extra (advanced mouse device)
+    MOUSE_BUTTON_FORWARD = 5,       // Mouse button fordward (advanced mouse device)
+    MOUSE_BUTTON_BACK    = 6,       // Mouse button back (advanced mouse device)
+} MouseButton;
+```
+
+Dibuja la bola en posición ballPosition, con el tamaño 50, y con el color ballColor
+
+```
+DrawCircleV(ballPosition, 50, ballColor);
+```
+
+Como habitualmente, yo me he puesto a jugar un poquito con el código para dibujar
+un rectángulo semitransparente de color azul en pantalla; esto no tiene mucha
+ciencia, sin embargo lo veremos mas adelante. Puedes omitirlo si deseas o puedes
+reescribirlo y jugar un poco con ello.
+
+[Ir al código de este ejercicio](/mouse-input.c)
