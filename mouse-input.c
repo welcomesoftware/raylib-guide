@@ -40,9 +40,15 @@ int main()
         BeginDrawing();
             
             ClearBackground(RAYWHITE);
-
+            
+            // Dibuja la bola en la posición, tamaño y color 
             DrawCircleV(ballPosition, 50, ballColor);
+            
+            // Dibuja un rectángulo y en lugar de color le pasa una función
+            // fade() la cual agrega una transparencia determinada a un color
+            // que nosotros elijamos.
             DrawRectangle(5, 5, 230, 50, Fade(SKYBLUE, 0.5f));
+            // Dibuja un rectángulo sin relleno, solo sus lineas
             DrawRectangleLines(5, 5, 230, 50, BLUE);
 
             DrawText("INSTRUCCIONES:", 15, 10, 10, BLACK);
